@@ -21,6 +21,13 @@ def test_player_status(status, get_player_generator):
 def test_player_balance(balance_value, get_player_generator):
     print(get_player_generator.set_balance(balance_value).build())
 
-def test_player_localization(get_player_generator):
-    localization = get_player_generator.update_inner_generator("localize", PlayerLocalization("fr_FR")).build()
+
+@pytest.mark.parametrize(
+    "localizations, loc", [
+        ("fr", "fr_FR"), ("it", "it-IT")
+    ]
+)
+def test_player_localization(get_player_generator, localizations, loc):
+    localization = get_player_generator.update_inner_value(
+        ["localize", localizations], PlayerLocalization(loc).build()).build()
     print(localization)

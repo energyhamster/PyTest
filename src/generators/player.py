@@ -1,9 +1,11 @@
 from src.enums.user_enums import Statuses
 from src.generators.player_localization import PlayerLocalization
+from src.base_classes.builder import BuilderBaseClass
 
 
-class Player:
+class Player(BuilderBaseClass):
     def __init__(self):
+        super().__init__()
         self.result = {}
         self.reset()
 
@@ -23,15 +25,7 @@ class Player:
         self.set_balance()
         self.set_status()
         self.result["localize"] = {
-            "en_US": PlayerLocalization("en_US").build(),
-            "uk_UA": PlayerLocalization("uk_UA").build()
+            "en": PlayerLocalization("en_US").build(),
+            "uk": PlayerLocalization("uk_UA").build()
         }
         return self
-
-    def update_inner_generator(self, key, generator):
-        self.result[key] = {"en": generator.build()}
-        return self
-
-
-    def build(self):
-        return self.result

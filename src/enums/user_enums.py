@@ -2,13 +2,14 @@ from enum import Enum
 
 
 class Genders(Enum):
-    female = "female"
-    male = "male"
+    FEMALE = "female"
+    MALE = "male"
 
 
 class Statuses(Enum):
-    inactive = "inactive"
-    active = "active"
+    INACTIVE = "inactive"
+    ACTIVE = "active"
+
 
 class UserErrors(Enum):
     WRONG_EMAIL = "Email doesn't contain @"

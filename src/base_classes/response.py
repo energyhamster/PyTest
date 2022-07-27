@@ -1,7 +1,3 @@
-from jsonschema import validate
-from src.enums.global_enums import GlobalErrorMessages
-
-
 class Response:
 
     def __init__(self, response):

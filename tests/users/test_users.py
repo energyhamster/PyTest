@@ -2,6 +2,8 @@ import pytest
 
 from src.base_classes.response import Response
 from src.schemas.user import User
+from src.schemas.computer import Computer
+from computer_example import computer
 
 
 @pytest.mark.production
@@ -42,3 +44,7 @@ def test_calculator(first_value, second_value, result, calculate):
     In test we are testing calculating with different values(Valid and not valid)
     """
     assert calculate(first_value, second_value) == result
+
+def test_pydantic_obj():
+    comp = Computer.parse_obj(computer)
+    print(comp.detailed_info.owners)

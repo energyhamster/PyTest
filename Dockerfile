@@ -6,14 +6,18 @@ ENV env $run_env
 LABEL "channel"="Hamster"
 LABEL "creator"="Energy_hamster"
 
-WORKDIR ./PyTest/Docker
+WORKDIR ./PyTest
 
-COPY . .
+VOLUME /allure_results
 
 RUN apk update && apk upgrade && apk add bash
+
+COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
 RUN pip install pydantic[email]
 
-CMD pytest -m "$env" -s -v tests/*
+COPY . .
+
+CMD pytest -m "$env" -s -v tests/* --alluredir=allure_results

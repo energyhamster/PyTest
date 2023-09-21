@@ -130,3 +130,6 @@ dmypy.json
 
 #My files
 allureress/
+
+#TestRail config
+trcli-config.yml

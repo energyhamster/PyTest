@@ -15,7 +15,7 @@ def value(request):
 
 
 def test_calculator(record_property, value, calculate):
-    record_property("test_id", f"{value[0]}")
+    record_property("test_id", value[0])
     result_of_calculation = calculate(value[1], value[2])
 
     assert result_of_calculation == value[3]

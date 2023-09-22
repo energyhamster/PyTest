@@ -41,7 +41,7 @@ import pytest
     ("C2214", "a", "b", None)
 ])
 def test_calculator(test_rail_case_id, first_value, second_value, result, calculate, record_property):
-    record_property("test_id", f"{test_rail_case_id}")
+    record_property("test_id", test_rail_case_id)
     assert calculate(first_value, second_value) == result
 
 # def test_pydantic_obj():
